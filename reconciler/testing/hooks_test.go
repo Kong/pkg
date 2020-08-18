@@ -162,7 +162,7 @@ func TestMultiUpdate(t *testing.T) {
 	updatedPod.Spec.RestartPolicy = v1.RestartPolicyAlways
 	f.CoreV1().Pods("test").Update(context.TODO(), updatedPod, metav1.UpdateOptions{})
 
-	f.CoreV1().Pods("test").Delete(context.TODO(), pod.Name, &metav1.DeleteOptions{})
+	f.CoreV1().Pods("test").Delete(context.TODO(), pod.Name, metav1.DeleteOptions{})
 	if err := h.WaitForHooks(time.Second); err != nil {
 		t.Error(err)
 	}
