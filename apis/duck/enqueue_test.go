@@ -161,6 +161,11 @@ func (fsii *fakeSharedIndexInformer) AddIndexers(indexers cache.Indexers) error 
 	return nil
 }
 
+func (fsii *fakeSharedIndexInformer) SetWatchErrorHandler(handler cache.WatchErrorHandler) error {
+	fsii.t.Fatalf("NYI: SetWatchErrorHandler")
+	return nil
+}
+
 func (fsii *fakeSharedIndexInformer) GetIndexer() cache.Indexer {
 	fsii.t.Fatalf("NYI: GetIndexer")
 	return nil

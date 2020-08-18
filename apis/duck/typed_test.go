@@ -17,6 +17,7 @@ limitations under the License.
 package duck_test
 
 import (
+	"context"
 	"encoding/json"
 	"errors"
 	"testing"
@@ -310,6 +311,6 @@ type invalidResource struct {
 	dynamic.NamespaceableResourceInterface
 }
 
-func (*invalidResource) List(options metav1.ListOptions) (*unstructured.UnstructuredList, error) {
+func (*invalidResource) List(ctx context.Context, options metav1.ListOptions) (*unstructured.UnstructuredList, error) {
 	return nil, errTest
 }
