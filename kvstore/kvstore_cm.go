@@ -64,7 +64,7 @@ func (cs *configMapKVStore) Init(ctx context.Context) error {
 // Load fetches the ConfigMap from k8s and unmarshals the data found
 // in the configdatakey type as specified by value.
 func (cs *configMapKVStore) Load(ctx context.Context) error {
-	cm, err := cs.cmClient.Get(cs.name, metav1.GetOptions{})
+	cm, err := cs.cmClient.Get(ctx, cs.name, metav1.GetOptions{})
 	if err != nil {
 		return err
 	}
@@ -75,12 +75,12 @@ func (cs *configMapKVStore) Load(ctx context.Context) error {
 // Save takes the value given in, and marshals it into a string
 // and saves it into the k8s ConfigMap under the configdatakey.
 func (cs *configMapKVStore) Save(ctx context.Context) error {
-	cm, err := cs.cmClient.Get(cs.name, metav1.GetOptions{})
+	cm, err := cs.cmClient.Get(ctx, cs.name, metav1.GetOptions{})
 	if err != nil {
 		return err
 	}
 	cm.Data = cs.data
-	_, err = cs.cmClient.Update(cm)
+	_, err = cs.cmClient.Update(ctx, cm, metav1.UpdateOptions{})
 	return err
 }
 
@@ -118,6 +118,6 @@ func (cs *configMapKVStore) createConfigMap() error {
 			Namespace: cs.namespace,
 		},
 	}
-	_, err := cs.cmClient.Create(cm)
+	_, err := cs.cmClient.Create(context.TODO(), cm, metav1.CreateOptions{})
 	return err
 }

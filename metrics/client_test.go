@@ -18,6 +18,7 @@ package metrics
 
 import (
 	"bytes"
+	"context"
 	"io/ioutil"
 	"net/http"
 	"net/url"
@@ -57,7 +58,10 @@ func TestClientMetrics(t *testing.T) {
 		Latency: newFloat64("latency"),
 		Result:  newInt64("result"),
 	}
-	metrics.Register(cp.NewLatencyMetric(), cp.NewResultMetric())
+	metrics.Register(metrics.RegisterOpts{
+		RequestLatency: cp.NewLatencyMetric(),
+		RequestResult:  cp.NewResultMetric(),
+	})
 
 	// Reset the metrics configuration to avoid leaked state from other tests.
 	InitForTesting()
@@ -102,7 +106,7 @@ func TestClientMetrics(t *testing.T) {
 		&http.Client{Transport: stub})
 
 	// When we send rest requests, we should trigger the metrics setup above.
-	result := client.Verb(http.MethodGet).Do()
+	result := client.Verb(http.MethodGet).Do(context.TODO())
 	if err := result.Error(); err != nil {
 		t.Errorf("Do() = %v", err)
 	}
