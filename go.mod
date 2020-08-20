@@ -14,7 +14,7 @@ require (
 	github.com/davecgh/go-spew v1.1.1
 	github.com/evanphx/json-patch v4.5.0+incompatible
 	github.com/ghodss/yaml v1.0.0
-	github.com/go-logr/logr v0.2.0
+	github.com/go-logr/logr v0.1.0
 	github.com/golang/protobuf v1.4.2
 	github.com/google/go-cmp v0.5.1
 	github.com/google/go-github/v27 v27.0.6
@@ -45,11 +45,11 @@ require (
 	google.golang.org/grpc v1.31.0
 	gopkg.in/yaml.v2 v2.3.0
 	gopkg.in/yaml.v3 v3.0.0-20190709130402-674ba3eaed22
-	k8s.io/api v0.19.0-rc.4
-	k8s.io/apiextensions-apiserver v0.19.0-rc.4
-	k8s.io/apimachinery v0.19.0-rc.4
+	k8s.io/api v0.18.8
+	k8s.io/apiextensions-apiserver v0.18.8
+	k8s.io/apimachinery v0.18.8
 	k8s.io/client-go v11.0.1-0.20190805182717-6502b5e7b1b5+incompatible
-	k8s.io/code-generator v0.19.0-rc.4
+	k8s.io/code-generator v0.18.8
 	k8s.io/gengo v0.0.0-20200428234225-8167cfdcfc14
 	k8s.io/klog v1.0.0
 	knative.dev/test-infra v0.0.0-20200813220306-af5517f4f576
@@ -59,9 +59,9 @@ require (
 replace (
 	github.com/prometheus/client_golang => github.com/prometheus/client_golang v0.9.2
 
-	k8s.io/api => k8s.io/api v0.19.0-rc.4
-	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.19.0-rc.4
-	k8s.io/apimachinery => k8s.io/apimachinery v0.19.0-rc.4
-	k8s.io/client-go => k8s.io/client-go v0.19.0-rc.4
-	k8s.io/code-generator => k8s.io/code-generator v0.19.0-rc.4
+	k8s.io/api => k8s.io/api v0.18.8
+	k8s.io/apiextensions-apiserver => k8s.io/apiextensions-apiserver v0.18.8
+	k8s.io/apimachinery => k8s.io/apimachinery v0.18.8
+	k8s.io/client-go => k8s.io/client-go v0.18.8
+	k8s.io/code-generator => k8s.io/code-generator v0.18.8
 )
